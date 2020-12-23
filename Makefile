@@ -1,5 +1,8 @@
-all: 
-	javac *.java
+##Basic makefile for compiling all source files and cleaning class files.
+##Might do more interesting stuff here later, i.e. running specific files.
 
-run: all 
-	java Day6part2
+all: 
+	javac */*.java
+
+clean: 
+	rm -rf */*.class

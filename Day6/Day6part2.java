@@ -5,22 +5,7 @@ public class Day6part2 {
 
 
     public static int checkMultiple(ArrayList<String> inputs) { // {a, a, a, a}
-        HashMap<String, Integer> map = new HashMap<String, Integer>();
-        int val;
-        for(String check: inputs) {
-            String[] split = check.split("");
-            for(String key: split) {
-                int val = map.remove(key);
-                if (val != 0) {
-                    map.put(key, val+1);
-                } else {
-                    map.put(key, 1);
-                }
-            }
-        }
-        for (int i = 0; i < map.values().size(); ++i) {
-            val += map.values().get(i);
-        }
+        return 0;
     }
 
 
