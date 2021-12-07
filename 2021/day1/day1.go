@@ -22,6 +22,7 @@ func main() {
 	localMax, numOfIncs, index := 10000000000, 0, 0
 	for scanner.Scan() {
 		line := scanner.Text()
+		// handle input text
 		i, err := strconv.Atoi(line)
 		if err != nil {
 			log.Fatal(err)
