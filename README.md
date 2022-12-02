@@ -9,3 +9,7 @@ First time doing AOC, mostly wrote solutions in Java and Python
 ## 2021
 
 Will try to complete as many as my sanity and time allows me to. Most, or rather all, solution will be done in Golang.
+
+## 2022
+
+Long time no see, this year it looks like it'll be Lua as the main language. Just felt like it :shrug:
