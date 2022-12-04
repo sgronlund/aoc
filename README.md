@@ -12,4 +12,4 @@ Will try to complete as many as my sanity and time allows me to. Most, or rather
 
 ## 2022
 
-Long time no see, this year it looks like it'll be Lua as the main language. Just felt like it :shrug:
+Long time no see, this year it looks like it'll be Lua as the main language. Just felt like it :shrug:, and if I know Lua? No, not at all
