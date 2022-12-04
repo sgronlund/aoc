@@ -1,5 +1,5 @@
 
-function Part1(filename)
+function Solve(filename)
     local calorietable = {}
     local file = io.open(filename, "r")
     if file == nil then 
@@ -27,9 +27,9 @@ function Part1(filename)
         table.sort(calorietable)
         local max = calorietable[#calorietable] -- # seems to be generating length?
         local topthree = calorietable[#calorietable] + calorietable[#calorietable - 1]  + calorietable[#calorietable - 2]
-        print("Part1 "..max.." and Part2 "..topthree)
+        print("Solve "..max.." and Part2 "..topthree)
     end
 end
 
 
-Part1("input.txt")
+Solve("input.txt")
