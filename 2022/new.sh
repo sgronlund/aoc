@@ -9,4 +9,5 @@ fileName="day${arg1}.lua"
 mkdir $folderName
 cp $tempName $folderName
 mv "${folderName}/${tempName}" "${folderName}/${fileName}"
-
+touch "${folderName}/test.txt" 
+touch "${folderName}/input.txt" 

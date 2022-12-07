@@ -1,3 +1,20 @@
+
+function SplitStringBasedOnSeparator(str, sep)
+    -- %s, whitespace regex
+    local temp = {}
+   for token in string.gmatch(str,"([^"..sep.."]+)") do
+        temp[#temp + 1] = token
+   end
+   return temp
+end
+
+function FindPartsOfStringBasedOnSeparator(str, sep)
+    local temp = {}
+   for token in string.gmatch(str,"(["..sep.."]+)") do
+        temp[#temp + 1] = token
+   end
+   return temp
+end
 --[[
     Skeleton/template for all AOC solutions using lua, *probably* 
 ]]
