@@ -1,4 +1,4 @@
-function ConvertStringRangeToTable(strRange)
+local function conv_str_t_tab(strRange)
     local tempTable = {}
     local lineSeparator = strRange:find("-")
     local lower = tonumber(strRange:sub(0,lineSeparator-1))
@@ -7,15 +7,20 @@ function ConvertStringRangeToTable(strRange)
     return tempTable
 end
 
-function CheckOverlap(ranges, checkMinor)
-    local first = table.unpack(ranges,1)
-    local second = table.unpack(ranges,2)
-    local lower1 = (table.unpack(first,1))
-    local lower2 = (table.unpack(second,1))
-    local upper1 = (table.unpack(first,2))
-    local upper2 = (table.unpack(second,2))
-    if checkMinor then return (upper1 >=lower2)  end
-    return (lower1  <= lower2 and upper1 >= upper2) or (lower2 <= lower1 and upper2 >= upper1)
+local function overlaps(r, checkMinor)
+    local a = (table.unpack(r,1)) -- a
+    local b = (table.unpack(r,2)) -- b
+
+    local c = (table.unpack(r,3)) -- c
+    local d = (table.unpack(r,4)) --d
+    -- checking encasement
+    -- checking minor overlap, b >= c or d >= a
+    -- 5-7, 7-9 true
+    -- 2-8, 3-7 true
+    -- 6-6, 4-6 true
+    -- 2-6,4-8 true
+    if checkMinor then return (b >= c and d >= a) end
+    return (a  <= c and b >= d) or (c <= a and d >= b)
 end
 
 function Solve(filename)
@@ -27,17 +32,17 @@ function Solve(filename)
         print(out)
     else
         while true do
-            local line  = file:read("l")
-            if line == nil then 
+            local l  = file:read("l")
+            if l == nil then 
                 break 
             else
-                local separatorIndex = string.find(line, ",")
-                local firstRange = line:sub(0, separatorIndex-1)
-                local secondRange = line:sub(separatorIndex+1,line:len())
-                local bothRanges = {ConvertStringRangeToTable(firstRange), ConvertStringRangeToTable(secondRange)}
-                local fullyOverlaps = CheckOverlap(bothRanges,false)
-            -- print(line)
-                local someOverlap = CheckOverlap(bothRanges,true)
+                local sep = string.find(l, ",")
+                local r1 = conv_str_t_tab(l:sub(0, sep-1))
+                local r2 = conv_str_t_tab(l:sub(sep+1,l:len()))
+                local r = {table.unpack(r1, 1),table.unpack(r1, 2), table.unpack(r2, 1), table.unpack(r2, 2)}
+
+                local fullyOverlaps = overlaps(r,false)
+                local someOverlap = overlaps(r,true)
                 if fullyOverlaps then totalscore = totalscore + 1 end
                 if someOverlap then totalscorepart2 = totalscorepart2 + 1 end
             end
