@@ -63,7 +63,6 @@ function Solve(filename)
                 end
             end
         end
-        -- if filename == "test.txt" then assert(totalscore == 7+5+6+10+11)  end-- from test input 
         print(totalscore)
         print(totalscore2)
         file:close()
